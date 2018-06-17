@@ -8,17 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Vehicle Identity</title>
-
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  <script>
+function showDiv() {
+	   document.getElementById('welcomeDiv').style.display = "block";
+}
+	</script>
   <body>
     <div class="jumbo parallax parallax-1"> </div>
     <div class="container">
@@ -28,7 +31,30 @@
           <h1 class = "pagetitle">AutoPulse</h1>
           <br>
           <hr/>
-          Encrypted Address: <input type="text" id="cryptAddress" name="cryptAddress"><br><br><br>
+           <h1 class="text-center">Read Vehicle Record</h1>
+            <br>
+            Encrypted Address: <input type="text" id="cryptAddress" name="cryptAddress"><br><br>
+            <form onSubmit="App.read(); return false;">
+            </form>
+						<input type="button" class="btn btn-primary" name="answer" value="Read" onclick="showDiv()" />
+						<div id="welcomeDiv"  style="display:none;" class="answer_list" > 
+						
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">VIN</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Registration Date</th>
+                    <th scope="col">readCount</th>
+                  </tr>
+                </thead>
+								<tbody id="vehiclesResults">
+								</tbody>
+              </table>
+
           <h1 class="text-center">Update Vehicle Record</h1>
           <hr/>
           <br/>
@@ -36,42 +62,16 @@
             <p class="text-center">Loading...</p>
           </div>
           <div id="content" style="display: none;">
-              
-              First name: <input type="text" name="fname" id="ownerName"><br>
-              Last name: <input type="text" name="lname" id="ownerLastName"><br>
+            
+            First name: <input type="text" name="fname" id="ownerName">
+            Last name: <input type="text" name="lname" id="ownerLastName"><br>
+            <br>
+            <form onSubmit="App.castVote(); return false;">
+              <button type="submit" class="btn btn-primary">Update</button><br>
               <hr/>
-                  <form onSubmit="App.castVote(); return false;">
-                <button type="submit" class="btn btn-primary">Update</button>
-                </form>
-              
-                 
-              <h1 class="text-center">Read Vehicle Record</h1>
-            <hr/>
-          <br/>
-            <table class="table">
-
-              <thead>
-                <form onSubmit="App.read(); return false;">
-                <button type="submit">Read</button>
-              </form>
-              <div id="readData">
-                
-              </div>
-
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
-                  <th scope="col">VIN</th>
-                  <th scope="col">Model</th>
-                  <th scope="col">Registration Date</th>
-                  <th scope="col">readCount</th>                  
-                </tr>
-              </thead>
-              <tbody id="vehiclesResults">
-              </tbody>
-            </table>
-            <hr/>
+            </form>
+						</div>
+          
             <div id="hidethis">
               <form onSubmit="App.castVote(); return false;">
                 <div class="form-group">
@@ -83,6 +83,10 @@
                 <hr />
               </form>
             </div>
+            
+            
+
+            <hr/>
             <p id="accountAddress" class="text-center"></p>
           </div>
         </div>
@@ -95,19 +99,16 @@
     <label>encrypted</label>
     <div id="demo1"></div>
     <br>
-
     <label>decrypted</label>
     <div id="demo3"></div>
-
     <br>
     
     <form onSubmit="App.encryption(); return false;">
       <button type="submit" class="btn btn-primary">Encryption</button>
     </form>
- -->
+    -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/web3.min.js"></script>

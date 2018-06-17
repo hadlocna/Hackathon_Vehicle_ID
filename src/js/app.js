@@ -154,7 +154,7 @@ App = {
       // $("#loader").show();
       $("#readData").show();
     }).catch(function(err) {
-      window.alert("User is not authorized.");
+      window.alert("Cannot read sorry");
     });
   },
 

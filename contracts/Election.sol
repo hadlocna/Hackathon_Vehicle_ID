@@ -68,8 +68,8 @@ contract Election {
 
     function read (uint _vehicleId) public {
         require(authorized[msg.sender]);
-        vehicles[_vehicleId].readconfirm = "We can read successfully";
-        votedEvent(_vehicleId);
+        //vehicles[_vehicleId].readconfirm = "We can read successfully";
+        //votedEvent(_vehicleId);
         
     }
 }

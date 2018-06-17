@@ -1,7 +1,7 @@
 pragma solidity ^0.4.2;
 
 contract Election {
-    // Model a Candidate
+    // Model a vehicle
     struct Vehicle {
         uint id;
         string fname;
@@ -15,7 +15,7 @@ contract Election {
     // Store accounts that have voted
     mapping(address => bool) public authorized;
     // Store Candidates
-    // Fetch Candidate
+    // Fetch vehicle
     mapping(uint => Vehicle) public vehicles;
     // Store Candidates Count
     uint public vehiclesCount;
@@ -31,12 +31,13 @@ contract Election {
         addVehicle(2, "Tom", "Biskup", "JHAXSAQPOIIWE878378JFHIURI23U8R90","Volkswagen-FClass", "09/16/2000", 0);
 
         // Authorize certain people
-        address nathanAuth = 0xF415156fA2540e1488CE57B7CC4f751642f7f90c;
+
+        address nathanAuth = 0x5dE32589bf4cAfA976c062Ba370CBd3eddBD5953;
         address keerthanaAuth = 0x41979C70443714bb0a49294ABd09653EfAE94Ec5;
-        address tomAuth = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
+        address tomAuth = 0xd82d10e270770e4ec46483a52577FE85e35472A9;
         address nathanNotAuth = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
         address keerthanaNotAuth = 0x3CD7e4491244176E70239C92353F3f7f43146C8D;
-        address tomNotAuth = 0xD482940Ba6B2429b38E634B50A954EA7803011D0;
+        address tomNotAuth = 0x27A0a1541976E203EDef3743B5F237e4da263f59;
         authorized[nathanAuth] = true;
         authorized[keerthanaAuth] = true;
         authorized[tomAuth] = true;
@@ -53,7 +54,7 @@ contract Election {
     }
 
 
-    function vote (uint _vehicleId, string _fname) public {
+    function update (uint _vehicleId,  string _fname, string _lname, string _vin, string _model, string _date, uint _readCount) public {
         // Check that the sender is authorized
         
 

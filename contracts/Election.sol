@@ -24,7 +24,14 @@ contract Election {
 
     function Election () public {
         // Authorize certain people
-        authorized[0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872] = true;
+        address admin = 0xD482940Ba6B2429b38E634B50A954EA7803011D0;
+        address admin2 = 0x5629cB04722435AE2C85e37a1Fd61f0AF6EA4dC0;
+        address peasant = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
+        address peasant2 = 0x3CD7e4491244176E70239C92353F3f7f43146C8D;
+        authorized[admin] = true;
+        authorized[admin2] = true;
+        authorized[peasant] = false;
+        authorized[peasant2] = false;
 
         // Defining authorized persons
         addCandidate("Nathan", "Hadlock");
@@ -42,9 +49,6 @@ contract Election {
 
         // require a valid candidate
         require(_candidateId > 0 && _candidateId <= candidatesCount);
-
-        // record that voter has voted
-        authorized[msg.sender] = true;
 
         // update candidate vote Count
         candidates[_candidateId].voteCount ++;

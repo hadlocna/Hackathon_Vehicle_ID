@@ -16,14 +16,12 @@ contract("Election", function(accounts) {
       electionInstance = instance;
       return electionInstance.vehicles(1);
     }).then(function(vehicle) {
-      assert.equal(vehicle[0], 1, "contains the correct id");
-      assert.equal(vehicle[1], "vehicle 1", "contains the correct name");
-      assert.equal(vehicle[2], 0, "contains the correct votes count");
+      assert.equal(vehicle[0], 1, "contains the correct id");      
+      assert.equal(vehicle[6], 0, "contains the correct votes count");
       return electionInstance.vehicles(2);
     }).then(function(vehicle) {
-      assert.equal(vehicle[0], 2, "contains the correct id");
-      assert.equal(vehicle[1], "vehicle 2", "contains the correct name");
-      assert.equal(vehicle[2], 0, "contains the correct votes count");
+      assert.equal(vehicle[0], 2, "contains the correct id");      
+      assert.equal(vehicle[6], 0, "contains the correct votes count");
     });
   });
 
@@ -41,7 +39,7 @@ contract("Election", function(accounts) {
       assert(voted, "the voter was marked as voted");
       return electionInstance.vehicles(vehicleId);
     }).then(function(vehicle) {
-      var readCount = vehicle[2];
+      var readCount = vehicle[6];
       assert.equal(readCount, 1, "increments the vehicle's vote count");
     })
   });

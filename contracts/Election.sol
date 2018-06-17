@@ -24,10 +24,12 @@ contract Election {
 
     function Election () public {
         // Authorize certain people
-        address admin = 0xF415156fA2540e1488CE57B7CC4f751642f7f90c;
-        address admin2 = 0x5629cB04722435AE2C85e37a1Fd61f0AF6EA4dC0;
-        address peasant = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
-        address peasant2 = 0x3CD7e4491244176E70239C92353F3f7f43146C8D;
+        address nathanAuth = 0xF415156fA2540e1488CE57B7CC4f751642f7f90c;
+        address keerthanaAuth = 0x5629cB04722435AE2C85e37a1Fd61f0AF6EA4dC0;
+        address tomAuth = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
+        address nathanNotAuth = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
+        address keerthanaNotAuth = 0x3CD7e4491244176E70239C92353F3f7f43146C8D;
+        address tomNotAuth = 0xD482940Ba6B2429b38E634B50A954EA7803011D0;
         authorized[admin] = true;
         authorized[admin2] = true;
         authorized[peasant] = false;

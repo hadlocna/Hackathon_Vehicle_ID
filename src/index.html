@@ -72,15 +72,17 @@
               </tbody>
             </table>
             <hr/>
-            <form onSubmit="App.castVote(); return false;">
-              <div class="form-group">
-                <label for="vehiclesSelect">Select Vehicle</label>
-                <select class="form-control" id="vehiclesSelect">
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary">Read</button>
-              <hr />
-            </form>
+            <div id="hidethis">
+              <form onSubmit="App.castVote(); return false;">
+                <div class="form-group">
+                  <label for="vehiclesSelect">Select Vehicle</label>
+                  <select class="form-control" id="vehiclesSelect">
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Read</button>
+                <hr />
+              </form>
+            </div>
             <p id="accountAddress" class="text-center"></p>
           </div>
         </div>

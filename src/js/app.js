@@ -73,6 +73,7 @@ App = {
       electionInstance = instance;
       return electionInstance.vehiclesCount();
     }).then(function(vehiclesCount) {
+      $("#hidethis").hide();
       var vehiclesResults = $("#vehiclesResults");
       vehiclesResults.empty();
       var vehicleRead = $("#readData");

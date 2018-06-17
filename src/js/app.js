@@ -123,6 +123,7 @@ App = {
 
     var vehicleId = $('#vehiclesSelect').val();
     var name = $('#ownerName').val();
+    var lastName = $('#ownerLastName').val();
     console.log($('#cryptAddress').val())
     //var encrypted = $('#cryptAddress').val();
     var encrypted = CryptoJS.AES.encrypt($('#cryptAddress').val(), "Secret Passphrase");
@@ -131,7 +132,7 @@ App = {
     // console.log(decryptAddress)
     // console.log(decryptAddress.toString(CryptoJS.enc.Utf8))
     App.contracts.Election.deployed().then(function(instance) {
-      return instance.update(vehicleId, name,  { from: App.account });
+      return instance.update(vehicleId, name, lastName,  { from: App.account });
 
     }).then(function(result) {
       // Wait for votes to update

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Election Results</title>
+    <title>Vehicle Identity</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,20 +20,32 @@
   <body>
     <div class="container" style="width: 650px;">
       <div class="row">
+        <br><br>
         <div class="col-lg-12">
-          <h1 class="text-center">Election Results</h1>
+          Address: <input type="text" name="address"><br><br><br>
+          <h1 class="text-center">UpdateVehicle Identity</h1>
           <hr/>
           <br/>
           <div id="loader">
             <p class="text-center">Loading...</p>
           </div>
           <div id="content" style="display: none;">
+              
+              First name: <input type="text" name="fname"><br>
+              Last name: <input type="text" name="lname"><br>
+              VIN: <input type="text" name="vin"><br>
+              <button type="button">Update</button>
+
+              <h1 class="text-center">Read Vehicle Identity</h1>
+            <hr/>
+          <br/>
             <table class="table">
               <thead>
+                <button type="button">Read</button>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Votes</th>
+                  <th scope="col">VIN</th>
                 </tr>
               </thead>
               <tbody id="candidatesResults">

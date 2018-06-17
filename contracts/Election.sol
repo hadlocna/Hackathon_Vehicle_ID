@@ -6,6 +6,7 @@ contract Election {
         uint id;
         string name;
         uint voteCount;
+        string vin;
     }
 
     // Store accounts that have voted
@@ -22,13 +23,13 @@ contract Election {
     );
 
     function Election () public {
-        addCandidate("Candidate 1");
-        addCandidate("Candidate 2");
+        addCandidate("Nathan", "Hadlock");
+        addCandidate("Tom", "Biskup");
     }
 
-    function addCandidate (string _name) private {
+    function addCandidate (string _name, string _vin) private {
         candidatesCount ++;
-        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
+        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0, _vin);
     }
 
     function vote (uint _candidateId) public {

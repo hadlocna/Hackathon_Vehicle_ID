@@ -75,10 +75,11 @@ App = {
     }).then(function(vehiclesCount) {
       var vehiclesResults = $("#vehiclesResults");
       vehiclesResults.empty();
-
+      var vehicleRead = $("#readData");
+      vehicleRead.empty();
       var vehiclesSelect = $('#vehiclesSelect');
       vehiclesSelect.empty();
-
+      console.log('contract called')
       for (var i = 1; i <= vehiclesCount; i++) {
         electionInstance.vehicles(i).then(function(vehicle) { 
           var id = vehicle[0];
@@ -87,7 +88,8 @@ App = {
           var vin = vehicle[3];          
           var model = vehicle[4];        
           var date = vehicle[5]; //In 'mm/dd/yy' format  
-          var readCount = vehicle[6];
+          var readData = vehicle[6];
+          var readCount = vehicle[7];
  
           // Render candidate Result
           var vehicleTemplate = "<tr><th>" + id + "</th><td>" + fname +"</td><td>" + readCount + "</td></tr>"
@@ -96,10 +98,16 @@ App = {
           // Render candidate ballot option
           var vehicleOption = "<option value='" + id + "' >" + fname + "</ option>"
           vehiclesSelect.append(vehicleOption);
+
+          // Add read data
+          //var readInformation = readData;
+          vehicleRead.append(readData);
+          console.log('read data appended')
         });
       }
       return electionInstance.authorized(App.account);
     }).then(function(hasVoted) {
+      console.log('in hasVoted function')
       // Do not allow a user to vote
       if(hasVoted) {
         //$('form').hide();
@@ -119,9 +127,9 @@ App = {
     //var encrypted = $('#cryptAddress').val();
     var encrypted = CryptoJS.AES.encrypt($('#cryptAddress').val(), "Secret Passphrase");
     var decryptAddress = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
-    console.log(encrypted)
-    console.log(decryptAddress)
-    console.log(decryptAddress.toString(CryptoJS.enc.Utf8))
+    // console.log(encrypted)
+    // console.log(decryptAddress)
+    // console.log(decryptAddress.toString(CryptoJS.enc.Utf8))
     App.contracts.Election.deployed().then(function(instance) {
       return instance.update(vehicleId, name,  { from: App.account });
 
@@ -133,19 +141,21 @@ App = {
       window.alert("User is not authorized.");
     });
   },
-  // encryption: function(){
-  //   console.log('in encryption function');
-  //   var address = $('#cryptAddress').val();
-  //   var encrypted = CryptoJS.AES.encrypt(address, "Secret Passphrase");
-   
+  
+  read: function(){
+    var vehicleId = $('#vehiclesSelect').val();
+    App.contracts.Election.deployed().then(function(instance) {
+      return instance.read(vehicleId, { from: App.account });
 
-  //   var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
-    
-  //   document.getElementById("demo1").innerHTML = encrypted;
-  //   document.getElementById("demo2").innerHTML = decrypted;
-  //   document.getElementById("demo3").innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
-  //   console.log(decrypted.toString(CryptoJS.enc.Utf8));
-  // },
+    }).then(function(result) {
+      // Wait for votes to update
+      // $("#content").hide();
+      // $("#loader").show();
+      $("#readData").show();
+    }).catch(function(err) {
+      window.alert("User is not authorized.");
+    });
+  },
 
   
 
@@ -161,18 +171,4 @@ $(function() {
   });
 });
 
-// Identity = {
-//   encryption: function(){
-//     console.log('in encryption function')
-//     var address = $('#cryptAddress').val();
-//     var encrypted = CryptoJS.AES.encrypt(address, "Secret Passphrase");
-   
-
-//     var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
-    
-//     document.getElementById("demo1").innerHTML = encrypted;
-//     document.getElementById("demo2").innerHTML = decrypted;
-//     document.getElementById("demo3").innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
-//   }
-// };
 

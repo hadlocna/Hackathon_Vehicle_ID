@@ -46,7 +46,12 @@
           <br/>
             <table class="table">
               <thead>
-                <button type="button">Read</button>
+                <form onSubmit="App.read(); return false;">
+                <button type="submit">Read</button>
+              </form>
+              <div id="readData">
+                
+              </div>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Name</th>

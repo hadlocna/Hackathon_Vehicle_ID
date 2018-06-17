@@ -84,7 +84,7 @@ App = {
         electionInstance.vehicles(i).then(function(vehicle) { 
           var id = vehicle[0];
           var fname = vehicle[1];
-          var lname = vehicle[3];        
+          var lname = vehicle[2];        
           var vin = vehicle[3];          
           var model = vehicle[4];        
           var date = vehicle[5]; //In 'mm/dd/yy' format  
@@ -92,7 +92,7 @@ App = {
           var readCount = vehicle[7];
  
           // Render candidate Result
-          var vehicleTemplate = "<tr><th>" + id + "</th><td>" + fname +"</td><td>" + readCount + "</td></tr>"
+          var vehicleTemplate = "<tr><th>" + id + "</th><td>" + fname +"</td><td>" + lname +"</td><td>" + vin + "</td><td>"+ model + "</td><td>" + date + "</td><td>" + readCount + "</td></tr>"
           vehiclesResults.append(vehicleTemplate);
 
           // Render candidate ballot option

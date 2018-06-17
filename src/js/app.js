@@ -144,16 +144,19 @@ App = {
   },
   
   read: function(){
+		console.log("doing read thing");
     //var vehicleId = $('#vehiclesSelect').val();
     App.contracts.Election.deployed().then(function(instance) {
+			console.log("doing default thing");
       return instance.read(1, { from: App.account });
-
     }).then(function(result) {
       // Wait for votes to update
       // $("#content").hide();
       // $("#loader").show();
-      $("#readData").show();
+			console.log("doing the right thing");
+      //$("#readData").show();
     }).catch(function(err) {
+			console.log("doing the err thing");
       window.alert("Cannot read sorry");
     });
   },

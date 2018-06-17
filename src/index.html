@@ -17,6 +17,11 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  <script>
+function showDiv() {
+	   document.getElementById('welcomeDiv').style.display = "block";
+}
+	</script>
   <body>
     <div class="jumbo parallax parallax-1"> </div>
     <div class="container">
@@ -30,9 +35,10 @@
             <br>
             Encrypted Address: <input type="text" id="cryptAddress" name="cryptAddress"><br><br>
             <form onSubmit="App.read(); return false;">
-              <button type="submit" class="btn btn-primary">Read</button><br>
             </form>
-            <div id="readData">
+						<input type="button" class="btn btn-primary" name="answer" value="Read" onclick="showDiv()" />
+						<div id="welcomeDiv"  style="display:none;" class="answer_list" > 
+						
               <table class="table">
                 <thead>
                   <tr>
@@ -45,11 +51,10 @@
                     <th scope="col">readCount</th>
                   </tr>
                 </thead>
-                <tbody id="vehiclesResults">
-                </tbody>
+								<tbody id="vehiclesResults">
+								</tbody>
               </table>
-            </div>
-          
+
           <h1 class="text-center">Update Vehicle Record</h1>
           <hr/>
           <br/>
@@ -65,6 +70,8 @@
               <button type="submit" class="btn btn-primary">Update</button><br>
               <hr/>
             </form>
+						</div>
+          
             
             
 

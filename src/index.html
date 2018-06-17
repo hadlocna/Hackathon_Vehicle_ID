@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +24,7 @@
       <div class="row">
         <br><br>
         <div class="col-lg-12">
-          Address: <input type="text" name="address"><br><br><br>
+          Encrypted Address: <input type="text" id="cryptAddress" name="cryptAddress"><br><br><br>
           <h1 class="text-center">UpdateVehicle Identity</h1>
           <hr/>
           <br/>
@@ -69,9 +71,26 @@
         </div>
       </div>
     </div>
+    <br><br>
+    
+    <!-- Enter Address: <input type="text" name="cryptAddress">
+    <br>
+    <label>encrypted</label>
+    <div id="demo1"></div>
+    <br>
 
+    <label>decrypted</label>
+    <div id="demo3"></div>
+
+    <br>
+    
+    <form onSubmit="App.encryption(); return false;">
+      <button type="submit" class="btn btn-primary">Encryption</button>
+    </form>
+ -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/web3.min.js"></script>

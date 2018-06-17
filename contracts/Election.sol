@@ -48,6 +48,7 @@ contract Election {
         
         require(authorized[msg.sender]);
         candidates[_candidateId].name = _name;
+       
 
         // require a valid candidate
         require(_candidateId > 0 && _candidateId <= candidatesCount);

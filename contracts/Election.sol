@@ -1,7 +1,7 @@
 pragma solidity ^0.4.2;
 
 contract Election {
-    // Model a Candidate
+    // Model a vehicle
     struct Vehicle {
         uint id;
         string fname;
@@ -15,7 +15,7 @@ contract Election {
     // Store accounts that have voted
     mapping(address => bool) public authorized;
     // Store Candidates
-    // Fetch Candidate
+    // Fetch vehicle
     mapping(uint => Vehicle) public vehicles;
     // Store Candidates Count
     uint public vehiclesCount;

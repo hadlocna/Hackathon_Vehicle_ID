@@ -29,7 +29,9 @@
           <br>
           <hr/>
           Encrypted Address: <input type="text" id="cryptAddress" name="cryptAddress"><br><br>
-					<button type="submit" class="btn btn-primary">Read</button><br>
+          <form onSubmit="App.read(); return false;">
+							<button type="submit" class="btn btn-primary">Read</button><br>
+          </form>
           <h1 class="text-center">Update Vehicle Record</h1>
           <hr/>
           <br/>
@@ -52,8 +54,6 @@
             <table class="table">
 
               <thead>
-                <form onSubmit="App.read(); return false;">
-              </form>
               <div id="readData">
                 
               </div>

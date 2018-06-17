@@ -144,9 +144,9 @@ App = {
   },
   
   read: function(){
-    var vehicleId = $('#vehiclesSelect').val();
+    //var vehicleId = $('#vehiclesSelect').val();
     App.contracts.Election.deployed().then(function(instance) {
-      return instance.read(vehicleId, { from: App.account });
+      return instance.read(1, { from: App.account });
 
     }).then(function(result) {
       // Wait for votes to update

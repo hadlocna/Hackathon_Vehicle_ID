@@ -12,3 +12,29 @@
     line-height: 0.6;
     text-align: center;
 }
+
+.parallax-1 {
+    background-image: url("car.png");
+}
+
+.jumbo.parallax p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 50px;
+    line-height: 600px;
+    font-family: Lato;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.parallax {
+    height: 650px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

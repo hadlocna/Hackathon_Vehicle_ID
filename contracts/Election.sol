@@ -31,7 +31,7 @@ contract Election {
         addVehicle(2, "Tom", "Biskup", "JHAXSAQPOIIWE878378JFHIURI23U8R90","Volkswagen-FClass", "09/16/2000", 0);
 
         // Authorize certain people
-        address nathanAuth = 0xF415156fA2540e1488CE57B7CC4f751642f7f90c;
+        address nathanAuth = 0x5dE32589bf4cAfA976c062Ba370CBd3eddBD5953;
         address keerthanaAuth = 0x5629cB04722435AE2C85e37a1Fd61f0AF6EA4dC0;
         address tomAuth = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
         address nathanNotAuth = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
@@ -53,7 +53,7 @@ contract Election {
     }
 
 
-    function vote (uint _vehicleId, string _fname) public {
+    function update (uint _vehicleId,  string _fname, string _lname, string _vin, string _model, string _date, uint _readCount) public {
         // Check that the sender is authorized
         
 

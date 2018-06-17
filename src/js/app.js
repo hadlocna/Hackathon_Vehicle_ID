@@ -71,28 +71,31 @@ App = {
     // Load contract data
     App.contracts.Election.deployed().then(function(instance) {
       electionInstance = instance;
-      return electionInstance.candidatesCount();
-    }).then(function(candidatesCount) {
-      var candidatesResults = $("#candidatesResults");
-      candidatesResults.empty();
+      return electionInstance.vehiclesCount();
+    }).then(function(vehiclesCount) {
+      var vehiclesResults = $("#vehiclesResults");
+      vehiclesResults.empty();
 
-      var candidatesSelect = $('#candidatesSelect');
-      candidatesSelect.empty();
+      var vehiclesSelect = $('#vehiclesSelect');
+      vehiclesSelect.empty();
 
-      for (var i = 1; i <= candidatesCount; i++) {
-        electionInstance.candidates(i).then(function(candidate) {
-          var id = candidate[0];
-          var name = candidate[1];
-          var VIN = candidate[3];
-          var voteCount = candidate[2];
-
+      for (var i = 1; i <= vehiclesCount; i++) {
+        electionInstance.vehicles(i).then(function(vehicle) { 
+          var id = vehicle[0];
+          var fname = vehicle[1];
+          var lname = vehicle[3];        
+          var vin = vehicle[3];          
+          var model = vehicle[4];        
+          var date = vehicle[5]; //In 'mm/dd/yy' format  
+          var readCount = vehicle[6];
+ 
           // Render candidate Result
-          var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + VIN +"</td><td>" + voteCount + "</td></tr>"
-          candidatesResults.append(candidateTemplate);
+          var vehicleTemplate = "<tr><th>" + id + "</th><td>" + fname +"</td><td>" + readCount + "</td></tr>"
+          vehiclesResults.append(vehicleTemplate);
 
           // Render candidate ballot option
-          var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
-          candidatesSelect.append(candidateOption);
+          var vehicleOption = "<option value='" + id + "' >" + fname + "</ option>"
+          vehiclesSelect.append(vehicleOption);
         });
       }
       return electionInstance.authorized(App.account);
@@ -109,7 +112,8 @@ App = {
   },
 
   castVote: function() {
-    var candidateId = $('#candidatesSelect').val();
+
+    var vehicleId = $('#vehiclesSelect').val();
     var name = $('#ownerName').val();
     console.log($('#cryptAddress').val())
     //var encrypted = $('#cryptAddress').val();
@@ -119,7 +123,8 @@ App = {
     console.log(decryptAddress)
     console.log(decryptAddress.toString(CryptoJS.enc.Utf8))
     App.contracts.Election.deployed().then(function(instance) {
-      return instance.vote(candidateId, name,  { from: App.account });
+      return instance.vote(vehicleId, name,  { from: App.account });
+
     }).then(function(result) {
       // Wait for votes to update
       $("#content").hide();

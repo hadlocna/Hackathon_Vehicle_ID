@@ -31,8 +31,9 @@ contract Election {
         addVehicle(2, "Tom", "Biskup", "JHAXSAQPOIIWE878378JFHIURI23U8R90","Volkswagen-FClass", "09/16/2000", 0);
 
         // Authorize certain people
+
         address nathanAuth = 0x5dE32589bf4cAfA976c062Ba370CBd3eddBD5953;
-        address keerthanaAuth = 0x5629cB04722435AE2C85e37a1Fd61f0AF6EA4dC0;
+        address keerthanaAuth = 0x41979C70443714bb0a49294ABd09653EfAE94Ec5;
         address tomAuth = 0xd82d10e270770e4ec46483a52577FE85e35472A9;
         address nathanNotAuth = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
         address keerthanaNotAuth = 0x3CD7e4491244176E70239C92353F3f7f43146C8D;

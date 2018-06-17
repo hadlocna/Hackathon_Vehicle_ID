@@ -130,7 +130,7 @@ App = {
       $("#content").hide();
       $("#loader").show();
     }).catch(function(err) {
-      console.error(err);
+      window.alert("User is not authorized.");
     });
   },
   // encryption: function(){

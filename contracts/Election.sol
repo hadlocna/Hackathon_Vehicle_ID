@@ -27,27 +27,24 @@ contract Election {
     );
 
     function Election () public {
-
-        addVehicle(1, "Nathan", "Hadlock", "JHDUEUJ12388U8FJEBJRFUBCDSEW12488", "Mercedes-Benz-EClass", "02/14/1995", " ", 0);
-        addVehicle(2, "Tom", "Biskup", "JHAXSAQPOIIWE878378JFHIURI23U8R90","Volkswagen-FClass", "09/16/2000", " ", 0);
+        addVehicle(1, "Tom", "Biskup", "JHAXSAQPOIIWE878378JFHIURI23U8R90","Volkswagen-FClass", "09/16/2000", " ", 0);
 
         // Authorize certain people
-
-
         address nathanAuth = 0x5dE32589bf4cAfA976c062Ba370CBd3eddBD5953;
         address keerthanaAuth = 0x41979C70443714bb0a49294ABd09653EfAE94Ec5;
         address tomAuth = 0xd82d10e270770e4ec46483a52577FE85e35472A9;
+
+				// Unauthorized addresses
         address nathanNotAuth = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
         address keerthanaNotAuth = 0x3CD7e4491244176E70239C92353F3f7f43146C8D;
         address tomNotAuth = 0x27A0a1541976E203EDef3743B5F237e4da263f59;
+
         authorized[nathanAuth] = true;
         authorized[keerthanaAuth] = true;
         authorized[tomAuth] = true;
         authorized[nathanNotAuth] = false;
         authorized[keerthanaNotAuth] = false;
         authorized[tomNotAuth] = false;
-
-        
     }
 
     function addVehicle (uint _id, string _fname, string _lname, string _vin, string _model, string _date, string _readconfirm, uint _readCount) private {

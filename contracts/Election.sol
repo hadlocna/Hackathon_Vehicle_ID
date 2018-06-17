@@ -31,7 +31,7 @@ contract Election {
         addVehicle(2, "Tom", "Biskup", "JHAXSAQPOIIWE878378JFHIURI23U8R90","Volkswagen-FClass", "09/16/2000", 0);
 
         // Authorize certain people
-        address admin = 0xD482940Ba6B2429b38E634B50A954EA7803011D0;
+        address admin = 0xF415156fA2540e1488CE57B7CC4f751642f7f90c;
         address admin2 = 0x5629cB04722435AE2C85e37a1Fd61f0AF6EA4dC0;
         address peasant = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
         address peasant2 = 0x3CD7e4491244176E70239C92353F3f7f43146C8D;
@@ -49,9 +49,13 @@ contract Election {
     }
 
 
-    function vote (uint _vehicleId) public {
-       
+    function vote (uint _vehicleId, string _fname) public {
+        // Check that the sender is authorized
+        
+
         require(authorized[msg.sender]);
+        vehicles[_vehicleId].fname = _fname;
+       
 
 
         // require a valid candidate

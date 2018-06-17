@@ -102,7 +102,7 @@ App = {
     }).then(function(hasVoted) {
       // Do not allow a user to vote
       if(hasVoted) {
-        $('form').hide();
+        //$('form').hide();
       }
       loader.hide();
       content.show();
@@ -112,9 +112,19 @@ App = {
   },
 
   castVote: function() {
+
     var vehicleId = $('#vehiclesSelect').val();
+    var name = $('#ownerName').val();
+    console.log($('#cryptAddress').val())
+    //var encrypted = $('#cryptAddress').val();
+    var encrypted = CryptoJS.AES.encrypt($('#cryptAddress').val(), "Secret Passphrase");
+    var decryptAddress = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+    console.log(encrypted)
+    console.log(decryptAddress)
+    console.log(decryptAddress.toString(CryptoJS.enc.Utf8))
     App.contracts.Election.deployed().then(function(instance) {
-      return instance.vote(vehicleId, { from: App.account });
+      return instance.vote(vehicleId, name,  { from: App.account });
+
     }).then(function(result) {
       // Wait for votes to update
       $("#content").hide();
@@ -122,11 +132,47 @@ App = {
     }).catch(function(err) {
       console.error(err);
     });
-  }
+  },
+  // encryption: function(){
+  //   console.log('in encryption function');
+  //   var address = $('#cryptAddress').val();
+  //   var encrypted = CryptoJS.AES.encrypt(address, "Secret Passphrase");
+   
+
+  //   var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+    
+  //   document.getElementById("demo1").innerHTML = encrypted;
+  //   document.getElementById("demo2").innerHTML = decrypted;
+  //   document.getElementById("demo3").innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
+  //   console.log(decrypted.toString(CryptoJS.enc.Utf8));
+  // },
+
+  
+
+
+  
 };
+
+
 
 $(function() {
   $(window).load(function() {
     App.init();
   });
 });
+
+// Identity = {
+//   encryption: function(){
+//     console.log('in encryption function')
+//     var address = $('#cryptAddress').val();
+//     var encrypted = CryptoJS.AES.encrypt(address, "Secret Passphrase");
+   
+
+//     var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+    
+//     document.getElementById("demo1").innerHTML = encrypted;
+//     document.getElementById("demo2").innerHTML = decrypted;
+//     document.getElementById("demo3").innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
+//   }
+// };
+

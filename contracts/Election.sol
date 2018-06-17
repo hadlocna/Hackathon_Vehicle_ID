@@ -2,27 +2,34 @@ pragma solidity ^0.4.2;
 
 contract Election {
     // Model a Candidate
-    struct Candidate {
+    struct Vehicle {
         uint id;
-        string name;
-        uint voteCount;
-        string vin;
+        string fname;
+        string lname;        
+        string vin;        
+        string model;        
+        string date; //In 'mm/dd/yy' format  
+        uint readCount; //how many times your record has been read      
     }
 
     // Store accounts that have voted
     mapping(address => bool) public authorized;
     // Store Candidates
     // Fetch Candidate
-    mapping(uint => Candidate) public candidates;
+    mapping(uint => Vehicle) public vehicles;
     // Store Candidates Count
-    uint public candidatesCount;
+    uint public vehiclesCount;
 
     // voted event
     event votedEvent (
-        uint indexed _candidateId
+        uint indexed _vehicleId
     );
 
     function Election () public {
+
+        addVehicle(1, "Nathan", "Hadlock", "JHDUEUJ12388U8FJEBJRFUBCDSEW12488", "Mercedes-Benz-EClass", "02/14/1995", 0);
+        addVehicle(2, "Tom", "Biskup", "JHAXSAQPOIIWE878378JFHIURI23U8R90","Volkswagen-FClass", "09/16/2000", 0);
+
         // Authorize certain people
         address nathanAuth = 0xF415156fA2540e1488CE57B7CC4f751642f7f90c;
         address keerthanaAuth = 0x5629cB04722435AE2C85e37a1Fd61f0AF6EA4dC0;
@@ -37,30 +44,31 @@ contract Election {
         authorized[keerthanaNotAuth] = false;
         authorized[tomNotAuth] = false;
 
-        // Defining authorized persons
-        addCandidate("Nathan", "Hadlock");
-        addCandidate("Tom", "Biskup");
+        
     }
 
-    function addCandidate (string _name, string _vin) private {
-        candidatesCount ++;
-        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0, _vin);
+    function addVehicle (uint _id, string _fname, string _lname, string _vin, string _model, string _date, uint _readCount) private {
+        vehiclesCount ++;
+        vehicles[vehiclesCount] = Vehicle(_id, _fname, _lname, _vin, _model, _date, _readCount);
     }
 
-    function vote (uint _candidateId, string _name) public {
+
+    function vote (uint _vehicleId, string _fname) public {
         // Check that the sender is authorized
         
+
         require(authorized[msg.sender]);
-        candidates[_candidateId].name = _name;
+        vehicles[_vehicleId].fname = _fname;
        
 
+
         // require a valid candidate
-        require(_candidateId > 0 && _candidateId <= candidatesCount);
+        require(_vehicleId > 0 && _vehicleId <= vehiclesCount);
 
         // update candidate vote Count
-        candidates[_candidateId].voteCount ++;
+        vehicles[_vehicleId].readCount ++;
 
         // trigger voted event
-        votedEvent(_candidateId);
+        votedEvent(_vehicleId);
     }
 }

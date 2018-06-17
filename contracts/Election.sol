@@ -30,10 +30,12 @@ contract Election {
         address nathanNotAuth = 0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872;
         address keerthanaNotAuth = 0x3CD7e4491244176E70239C92353F3f7f43146C8D;
         address tomNotAuth = 0xD482940Ba6B2429b38E634B50A954EA7803011D0;
-        authorized[admin] = true;
-        authorized[admin2] = true;
-        authorized[peasant] = false;
-        authorized[peasant2] = false;
+        authorized[nathanAuth] = true;
+        authorized[keerthanaAuth] = true;
+        authorized[tomAuth] = true;
+        authorized[nathanNotAuth] = false;
+        authorized[keerthanaNotAuth] = false;
+        authorized[tomNotAuth] = false;
 
         // Defining authorized persons
         addCandidate("Nathan", "Hadlock");

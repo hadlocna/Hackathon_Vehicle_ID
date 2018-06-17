@@ -31,11 +31,14 @@
           </div>
           <div id="content" style="display: none;">
               
-              First name: <input type="text" name="fname"><br>
+              First name: <input type="text" name="fname" id="ownerName"><br>
               Last name: <input type="text" name="lname"><br>
               VIN: <input type="text" name="vin"><br>
-              <button type="button">Update</button>
-
+                  <form onSubmit="App.castVote(); return false;">
+                <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+              
+                 
               <h1 class="text-center">Read Vehicle Identity</h1>
             <hr/>
           <br/>

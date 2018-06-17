@@ -99,7 +99,7 @@ App = {
     }).then(function(hasVoted) {
       // Do not allow a user to vote
       if(hasVoted) {
-        $('form').hide();
+        //$('form').hide();
       }
       loader.hide();
       content.show();
@@ -110,8 +110,9 @@ App = {
 
   castVote: function() {
     var candidateId = $('#candidatesSelect').val();
+    var name = $('#ownerName').val();
     App.contracts.Election.deployed().then(function(instance) {
-      return instance.vote(candidateId, { from: App.account });
+      return instance.vote(candidateId, name, { from: App.account });
     }).then(function(result) {
       // Wait for votes to update
       $("#content").hide();

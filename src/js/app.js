@@ -114,7 +114,9 @@ App = {
   castVote: function() {
 
     var vehicleId = $('#vehiclesSelect').val();
-    var name = $('#ownerName').val();
+    var fname = $('#fname').val();
+    var lname = $('#lname').val();
+    var vin = $('#vin').val();
     console.log($('#cryptAddress').val())
     //var encrypted = $('#cryptAddress').val();
     var encrypted = CryptoJS.AES.encrypt($('#cryptAddress').val(), "Secret Passphrase");
@@ -123,7 +125,7 @@ App = {
     console.log(decryptAddress)
     console.log(decryptAddress.toString(CryptoJS.enc.Utf8))
     App.contracts.Election.deployed().then(function(instance) {
-      return instance.update(vehicleId, name,  { from: App.account });
+      return instance.update(vehicleId, fname, lname, vin,  { from: App.account });
 
     }).then(function(result) {
       // Wait for votes to update
@@ -131,6 +133,7 @@ App = {
       $("#loader").show();
     }).catch(function(err) {
       window.alert("User is not authorized.");
+			console.error(err);
     });
   },
   // encryption: function(){

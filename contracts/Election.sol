@@ -54,20 +54,17 @@ contract Election {
     }
 
 
-    function update (uint _vehicleId,  string _fname, string _lname, string _vin, string _model, string _date, uint _readCount) public {
+    function update (uint _vehicleId,  string _fname, string _lname, string _vin) public {
         // Check that the sender is authorized
-        
-
-        require(authorized[msg.sender]);
+        //require(authorized[msg.sender]);
         vehicles[_vehicleId].fname = _fname;
-       
-
+        vehicles[_vehicleId].lname = _lname;
+        vehicles[_vehicleId].vin = _vin;
 
         // require a valid candidate
         require(_vehicleId > 0 && _vehicleId <= vehiclesCount);
 
-        // update candidate vote Count
-        vehicles[_vehicleId].readCount ++;
+				vehicles[_vehicleId].readCount ++;
 
         // trigger voted event
         votedEvent(_vehicleId);

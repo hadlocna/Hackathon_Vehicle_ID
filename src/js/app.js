@@ -123,7 +123,7 @@ App = {
     console.log(decryptAddress)
     console.log(decryptAddress.toString(CryptoJS.enc.Utf8))
     App.contracts.Election.deployed().then(function(instance) {
-      return instance.vote(vehicleId, name,  { from: App.account });
+      return instance.update(vehicleId, name,  { from: App.account });
 
     }).then(function(result) {
       // Wait for votes to update

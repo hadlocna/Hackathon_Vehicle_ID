@@ -98,7 +98,7 @@ App = {
           vehiclesSelect.append(vehicleOption);
         });
       }
-      return electionInstance.voters(App.account);
+      return electionInstance.authorized(App.account);
     }).then(function(hasVoted) {
       // Do not allow a user to vote
       if(hasVoted) {

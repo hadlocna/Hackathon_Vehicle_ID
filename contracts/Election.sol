@@ -10,7 +10,7 @@ contract Election {
     }
 
     // Store accounts that have voted
-    mapping(address => bool) public voters;
+    mapping(address => bool) public authorized;
     // Store Candidates
     // Fetch Candidate
     mapping(uint => Candidate) public candidates;
@@ -23,6 +23,10 @@ contract Election {
     );
 
     function Election () public {
+        // Authorize certain people
+        authorized[0x8586c212FDC0bf87dd6Fd90fFec35b0c29301872] = true;
+
+        // Defining authorized persons
         addCandidate("Nathan", "Hadlock");
         addCandidate("Tom", "Biskup");
     }
@@ -33,14 +37,14 @@ contract Election {
     }
 
     function vote (uint _candidateId) public {
-        // require that they haven't voted before
-        require(!voters[msg.sender]);
+        // Check that the sender is authorized
+        require(!authorized[msg.sender]);
 
         // require a valid candidate
         require(_candidateId > 0 && _candidateId <= candidatesCount);
 
         // record that voter has voted
-        voters[msg.sender] = true;
+        authorized[msg.sender] = true;
 
         // update candidate vote Count
         candidates[_candidateId].voteCount ++;

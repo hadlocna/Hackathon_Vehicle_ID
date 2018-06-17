@@ -84,11 +84,10 @@ App = {
           var id = vehicle[0];
           var fname = vehicle[1];
           var lname = vehicle[3];        
-          var vin = vehicle[3];
-          var make = vehicle[4];
-          var model = vehicle[5];        
-          var date = vehicle[6]; //In 'mm/dd/yy' format  
-          var readCount = vehicle[7];
+          var vin = vehicle[3];          
+          var model = vehicle[4];        
+          var date = vehicle[5]; //In 'mm/dd/yy' format  
+          var readCount = vehicle[6];
  
           // Render candidate Result
           var vehicleTemplate = "<tr><th>" + id + "</th><td>" + fname +"</td><td>" + readCount + "</td></tr>"

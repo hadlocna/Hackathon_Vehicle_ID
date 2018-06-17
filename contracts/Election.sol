@@ -45,7 +45,7 @@ contract Election {
 
     function vote (uint _candidateId) public {
         // Check that the sender is authorized
-        require(!authorized[msg.sender]);
+        require(authorized[msg.sender]);
 
         // require a valid candidate
         require(_candidateId > 0 && _candidateId <= candidatesCount);

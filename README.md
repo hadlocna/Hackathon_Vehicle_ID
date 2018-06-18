@@ -4,7 +4,7 @@ Lets Improve Vehicle Identity
 This is a decentralised app based on the ethreum framework that proposes to improve privacy of car owners, help government and law enforcement manage vehicles for violations, safety/pollution standards and dealers/manufacturers with maintenance and servicing.
 The core idea is achieved by removing the license places and transmitting a dynamic ID via QR code or bluetooth becaons on car which can only be encrypted by authorised parties. This allows for irrefutable ownership and history of cars as well which is of value in user car sales market. 
 
-A presnetation of our idea can be found [here](https://docs.google.com/presentation/d/1HG1xXLB_KTHT5bFT4plJwzJKtlSCwIT6F_nScdoOXmI/edit?usp=sharing)
+A presentation of our idea can be found [here](https://docs.google.com/presentation/d/1HG1xXLB_KTHT5bFT4plJwzJKtlSCwIT6F_nScdoOXmI/edit?usp=sharing)
 # Dependencies
 Install the dependencies:
 * node-js: v8.11.3 or higher
